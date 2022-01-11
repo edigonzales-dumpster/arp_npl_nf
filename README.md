@@ -9,27 +9,29 @@ docker run --rm --name oerebdb -p 54323:5432 -e POSTGRES_PASSWORD=mysecretpasswo
 --dbhost localhost --dbport 54321 --dbdatabase edit --dbusr gretl --dbpwd gretl \
 
 ```
-java -jar /Users/stefan/apps/ili2h2gis-4.7.0/ili2h2gis-4.7.0.jar \
---dbfile arp_nutzungsplanung_datenumbau \
---dbschema arp_nutzungsplanung_import --models SO_Nutzungsplanung_20171118 \
+java -jar /Users/stefan/apps/ili2pg-4.7.0/ili2pg-4.7.0.jar \
+--dbhost localhost --dbport 54321 --dbdatabase edit --dbusr gretl --dbpwd gretl \
+--dbschema arp_nutzungsplanung_import_v1 --models SO_Nutzungsplanung_20171118 \
 --defaultSrsCode 2056 --createGeomIdx --createFk --createFkIdx --createUnique --createEnumTabs --beautifyEnumDispName --createMetaInfo --createNumChecks --nameByTopic --strokeArcs --sqlEnableNull \
+--createBasketCol --createDatasetCol \
 --schemaimport
 ```
 
 ```
-java -jar /Users/stefan/apps/ili2h2gis-4.7.0/ili2h2gis-4.7.0.jar \
---dbfile arp_nutzungsplanung_datenumbau \
---dbschema arp_nutzungsplanung_import --models SO_Nutzungsplanung_20171118 \
+java -jar /Users/stefan/apps/ili2pg-4.7.0/ili2pg-4.7.0.jar \
+--dbhost localhost --dbport 54321 --dbdatabase edit --dbusr gretl --dbpwd gretl \
+--dbschema arp_nutzungsplanung_import_v1 --models SO_Nutzungsplanung_20171118 \
 --defaultSrsCode 2056 --disableValidation \
---import 2498.xtf
+--dataset 2498 --import 2498.xtf
 ```
 
 ```
-java -jar /Users/stefan/apps/ili2h2gis-4.7.0/ili2h2gis-4.7.0.jar \
---dbfile arp_nutzungsplanung_datenumbau \
---dbschema arp_nutzungsplanung --models SO_ARP_Nutzungsplanung_Nachfuehrung_20201005 \
+java -jar /Users/stefan/apps/ili2pg-4.7.0/ili2pg-4.7.0.jar \
+--dbhost localhost --dbport 54321 --dbdatabase edit --dbusr gretl --dbpwd gretl \
+--dbschema arp_nutzungsplanung_transfer_v1 --models SO_ARP_Nutzungsplanung_Nachfuehrung_20201005 \
 --defaultSrsCode 2056 --createGeomIdx --createFk --createFkIdx --createUnique --createEnumTabs --beautifyEnumDispName --createMetaInfo --createNumChecks --nameByTopic --strokeArcs \
 --idSeqMin 1000000000000 \
+--createBasketCol --createDatasetCol \
 --schemaimport
 ```
 
